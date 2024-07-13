@@ -1,27 +1,78 @@
-# MonsterRolodexNg18
+# Angular Directory Structure
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
+## Best Practices:
 
-## Development server
+1. Standalone Components:  
+   * Each component can be standalone, meaning they don’t need to be declared in a module.  
+   * This allows for better modularity and reusability.  
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+2. Core Module:  
+   * Keep the core directory for singleton services, guards, interceptors, and models.  
+   * Core services and utilities that are used globally should be placed here.
 
-## Code scaffolding
+3. Shared Module:  
+   * The shared directory is for components, directives, and pipes that are reused across multiple features.  
+   * Standalone components, directives, and pipes can be placed here without needing to declare them in a module.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+4. Feature Modules:  
+   * Organize features into their own directories.  
+   * Feature-specific components, services, and routing modules should be placed within these directories.
 
-## Build
+5. Routing:  
+   * Define routing in feature-specific routing modules.  
+   * Lazy loading should be utilized to load feature modules on demand.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Summary:
+  * Standalone Components: Utilize standalone components for modularity and reusability.  
+  * Core and Shared Directories: Maintain a clear separation of core and shared resources.  
+  * Feature Modules: Organize features into their own modules with dedicated routing.  
+  * Routing: Use lazy loading for better performance and manage routing in feature-specific modules.  
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```
+  src/
+  ├── app/
+  │ ├── core/
+  │ │ ├── interceptors/
+  │ │ ├── services/
+  │ │ ├── guards/
+  │ │ ├── models/
+  │ │ ├── core.module.ts
+  │ │ └── ...
+  │ ├── shared/
+  │ │ ├── components/
+  │ │ ├── directives/
+  │ │ ├── pipes/
+  │ │ └── ...
+  │ ├── features/
+  │ │ ├── feature1/
+  │ │ │ ├── components/
+  │ │ │ │ ├── example/
+  │ │ │ │ │ ├── example.component.html
+  │ │ │ │ │ ├── example.component.scss
+  │ │ │ │ │ ├── example.component.ts
+  │ │ │ │ │ ├── example.component.spec.ts
+  │ │ │ ├── services/
+  │ │ │ │ ├── example.service.ts
+  │ │ │ │ ├── example.service.spec.ts
+  │ │ │ ├── feature1-routing.module.ts
+  │ │ │ ├── feature1.module.ts
+  │ │ │ └── ...
+  │ │ ├── feature2/
+  │ │ │ ├── components/
+  │ │ │ ├── services/
+  │ │ │ ├── feature2-routing.module.ts
+  │ │ │ ├── feature2.module.ts
+  │ │ │ └── ...
+  │ ├── main.ts
+  │ ├── app.component.html
+  │ ├── app.component.scss
+  │ ├── app.component.ts
+  │ └── ...
+  ├── assets/
+  ├── environments/
+  ├── styles/
+  ├── index.html
+  ├── polyfills.ts
+  ├── test.ts
+  └── ...
+```
