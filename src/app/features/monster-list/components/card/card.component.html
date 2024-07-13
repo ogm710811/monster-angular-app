@@ -1,1 +1,8 @@
-<p>card works!</p>
+<div class='card-container'>
+  <img
+    [alt]="monster + this.monster.name"
+    [src]="'https://robohash.org/' + this.monster.id + '?set=set2&size=180x180'"
+  />
+  <h2>{{this.monster.name}}</h2>
+  <p>{{this.monster.email}}</p>
+</div>

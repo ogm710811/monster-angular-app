@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Monster} from "../../../../core/models/Monster";
 
 @Component({
   selector: 'app-card',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './card.component.scss'
 })
 export class CardComponent {
-
+  @Input({required: true}) monster!: Monster;
 }

@@ -1,1 +1,9 @@
-<p>card-list works!</p>
+<h1 class='title'>Monsters Rolodex</h1>
+<app-search-box [placeholder]="'Search monsters ...'"/>
+<div class="card-list">
+  @if (filteredMonsters$ | async; as monsters) {
+    @for (monster of monsters; track monster.id) {
+        <app-card [monster]="monster" />
+    }
+  }
+</div>
